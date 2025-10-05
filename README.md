@@ -17,7 +17,7 @@
 
 ## Screenshot
 
-![Game](docs/images/Img1.png)
+![Game](Docs/images/Img1.png)
 
 ---
 
