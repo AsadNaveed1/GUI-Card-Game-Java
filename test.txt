@@ -1,0 +1,147 @@
+# GUI-Card-Game-Java
+
+[Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+[Swing](https://img.shields.io/badge/Swing-GUI-007396?style=for-the-badge&logo=java&logoColor=white)
+[AWT](https://img.shields.io/badge/AWT-Graphics-5382a1?style=for-the-badge&logo=java&logoColor=white)
+
+A Java Swing-based card game where you play against a dealer with betting mechanics.
+
+## Table of Contents
+
+- [Description](#description)
+- [Game Rules](#game-rules)
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [How to Run](#how-to-run)
+  - [Using Command Line](#using-command-line)
+  - [Using an IDE](#using-an-ide)
+  - [Creating a JAR File](#creating-a-jar-file)
+- [How to Play](#how-to-play)
+- [Game Controls](#game-controls)
+- [Features](#features)
+- [Important Notes](#important-notes)
+- [Author](#author)
+
+## Description
+
+The computer will simulate the dealer. When the game starts, 52 playing cards will be shuffled and the player is given $100. At each round of the game, both the player and the dealer will be given 3 cards (they are drawn from the top of the deck). Player will place his/her bet (you can assume the player always place a positive integer bet). Then before the dealer opens the cards, the player has a chance to draw AT MOST two cards from the top of the deck to replace any two of the cards on hand and each card on hand can only be replaced ONCE. Player will lose the bet if the dealer got a better hand (see below for explanation), otherwise the player wins the same amount of money as his/her bet.
+
+## Game Rules
+
+Rules to determine who has better cards:
+J, Q, K are regarded as special cards.
+
+* **Rule 1:** The one with more special cards wins.
+* **Rule 2:** If both have the same number of special cards, add the face values of the other card(s) and take the remainder after dividing the sum by 10. The one with a bigger remainder wins. (Note: Ace = 1).
+* **Rule 3:** The dealer wins if both rule 1 and rule 2 cannot distinguish the winner.
+
+## Prerequisites
+
+- Java Development Kit (JDK) 8 or higher
+- Java Runtime Environment (JRE)
+
+## Project Structure
+
+```
+GUI-Card-Game-Java/
+├── Main.java           # Entry point of the application
+├── SetGame.java        # Game logic and UI controller
+├── StartGame.java      # Game initialization and card shuffling
+├── Images/             # Folder containing card images
+│   ├── card_back.gif
+│   ├── card_11.gif
+│   ├── card_12.gif
+│   └── ... (all card images)
+└── README.md
+```
+
+## How to Run
+
+### Using Command Line
+
+1. **Ensure you have the Images folder:** Make sure the `Images` folder containing all card images is in the same directory as your Java files.
+
+2. **Open terminal/command prompt** and navigate to the project directory:
+   ```bash
+   cd path/to/GUI-Card-Game-Java
+   ```
+
+3. **Compile all Java files:**
+   ```bash
+   javac Main.java SetGame.java StartGame.java
+   ```
+
+4. **Run the Main class:**
+   ```bash
+   java Main
+   ```
+
+### Using an IDE
+
+**Eclipse, IntelliJ IDEA, or NetBeans:**
+
+1. **Import the project** into your IDE
+2. **Ensure the Images folder** is in the project root directory
+3. **Right-click on `Main.java`** and select "Run" or "Run As → Java Application"
+
+### Creating a JAR File
+
+1. **Compile the files** (if not already compiled):
+   ```bash
+   javac Main.java SetGame.java StartGame.java
+   ```
+
+2. **Create a manifest file** (manifest.txt):
+   ```
+   Main-Class: Main
+   ```
+
+3. **Create the JAR:**
+   ```bash
+   jar cvfm CardGame.jar manifest.txt *.class Images/
+   ```
+
+4. **Run the JAR:**
+   ```bash
+   java -jar CardGame.jar
+   ```
+
+## How to Play
+
+1. **Start the Game:** Enter your bet amount in the text field and click the "Start" button
+2. **View Your Cards:** Three cards will be dealt to you (face up)
+3. **Replace Cards (Optional):** You can replace up to 2 cards by clicking the "Replace Card" buttons
+4. **See Results:** Click the "Result" button to reveal the dealer's cards and determine the winner
+5. **Continue Playing:** If you have money remaining, place another bet and click "Start" for the next round
+6. **Game Over:** The game ends when you run out of money
+
+## Game Controls
+
+- **Start Button:** Begins a new round after placing a bet
+- **Replace Card 1/2/3 Buttons:** Replace individual cards (maximum 2 replacements per round)
+- **Result Button:** Reveals dealer's cards and determines the winner
+- **Control → Exit:** Exit the game
+
+## Features
+
+- Graphical user interface using Java Swing
+- Card shuffling algorithm ensuring no duplicate cards
+- Betting system with balance tracking
+- Visual card representations using GIF images
+- Menu bar with exit option
+- Win/loss determination based on special cards and face values
+- Warning messages for invalid bets
+
+## Important Notes
+
+- You must have the `Images` folder with all card image files (card_11.gif through card_413.gif and card_back.gif) in the same directory as the compiled classes
+- Card images should follow the naming convention: `card_[suit][number].gif` where suit is 1-4 and number is 1-13
+- The game starts with $100
+- You cannot bet more than your current balance
+- The game ends when your balance reaches $0
+
+## Author
+
+Muhammad Asad Naveed  
+UID: 3035957848  
+COMP 2396 - Assignment 3
